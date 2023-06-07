@@ -15,5 +15,19 @@ class UserDao extends BaseDao
     {
         return $this->get_by_id($id);
     }
+
+    public function get_user_by_column($column, $value)
+    {
+        $query = "SELECT * FROM user WHERE $column = :value";
+        $params = array(':value' => $value);
+        return $this->query_unique($query, $params);
+    }
+
+    public function column_value_count($value, $column) 
+    {
+        $query = "SELECT COUNT(*) as count FROM user WHERE $column = :value";
+        $params = array(":value" => $value);
+        return $this->query_unique($query, $params)['count'];
+    }
 }
 ?>
