@@ -38,7 +38,6 @@ var UserService = {
       },
       submitHandler: function (form, validator) {
         var entity = Object.fromEntries(new FormData(form).entries());
-        console.log(entity);
         UserService.login(entity);
       },
       invalidHandler: function (event, validator) {
@@ -109,7 +108,6 @@ var UserService = {
       },
       submitHandler: function (form, validator) {
         var entity = Object.fromEntries(new FormData(form).entries());
-        console.log(entity);
         UserService.register(entity);
       },
       invalidHandler: function (event, validator) {
@@ -137,7 +135,6 @@ var UserService = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        console.log(result);
         if (result.message) {
           toastr.error(result.message);
         }
@@ -160,7 +157,6 @@ var UserService = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        console.log(result);
         if (result.message == "success") {
           window.location.replace("index.html#login");
         } else {
