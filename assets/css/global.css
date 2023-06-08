@@ -3,7 +3,18 @@
   max-width: 400px;
   margin: auto;
 }
-main#spapp { background:#f8f9fa; }
+main#spapp {
+  background: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+}
+
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126

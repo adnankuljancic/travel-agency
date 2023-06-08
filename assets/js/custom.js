@@ -11,6 +11,7 @@ $(document).ready(function () {
   app.route({ view: "view_2", load: "view_2.html" });
   app.route({ view: "login", load: "login.html" });
   app.route({ view: "about", load: "about.html" });
+  app.route({ view: "register", load: "register.html" });
 
   // run app
   app.run();
