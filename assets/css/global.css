@@ -1,8 +1,26 @@
+.card {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+main#spapp {
+  background: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+}
+
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
+/* html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -21,9 +39,9 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
+} */
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+/* article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -57,4 +75,4 @@ main#spapp > section { padding:60px 10px 10px 10px; background:#ffcdd2; }
 main#spapp > section#view_2 { background:#90caf9; }  
 main#spapp > section#view_3 { background:#a5d6a7; } 
 main#spapp > section#error_404 { background:#b71c1c; color:#fff; }
-main#spapp h1 { font-size: 4.2rem; line-height: 110%; margin: 2.1rem 0 1.68rem 0; text-align:center; }
+main#spapp h1 { font-size: 4.2rem; line-height: 110%; margin: 2.1rem 0 1.68rem 0; text-align:center; } */
