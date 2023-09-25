@@ -5,6 +5,7 @@
 }
 main#spapp {
   background: #f8f9fa;
+  height: fit-content;
 }
 
 a {
@@ -14,7 +15,6 @@ a {
 .error {
   color: red;
 }
-
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
