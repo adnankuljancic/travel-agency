@@ -18,15 +18,36 @@ var TripService = {
     var html = "";
     for (var i = 0; i < data.length; i++) {
       html +=
-        "<div class='col'><div class='card m-3' style='width: 18rem'>" +
-        "<img src='https://i.natgeofe.com/n/5de6e34a-d550-4358-b7ef-4d79a09c680e/aerial-beach-miami-florida_16x9.jpg'" +
-        "class='card-img-top' alt='...' /> " +
+        "<div class='col'><div class='card m-3' style='width: 24rem' data-id='" +
+        data[i].id +
+        "'>" +
+        "<img src='" +
+        data[i].image_link +
+        "' class='card-img-top' alt='...' /> " +
         " <div class='card-body'> <h3 class='card-title'> " +
         data[i].name +
-        "</h3> <p class='card-text'>" +
-        data[i].description +
-        "</p> <a href='#' class='btn btn-primary'>Go somewhere</a> </div></div></div>";
+        "</h3> <p style='color: #4761FF'>" +
+        data[i].price +
+        "BAM</p><p class='card-text'>" +
+        data[i].short_description +
+        "</p> <a href='#trip-details' class='btn btn-primary see-more-button'>See more</a> </div></div></div>";
     }
     $("#trips-div").html(html);
+    $("#trips-div").on("click", ".card", function () {
+      // Get the trip ID from the data attribute
+      const tripId = $(this).data("id");
+
+      // Redirect or navigate to the trip details page with the trip ID
+      // Example: You can set the hash fragment with the trip ID
+      TripService.updateTripIdInParagraph(tripId);
+    });
   },
+
+  updateTripIdInParagraph: function(tripId) {
+    // Get the paragraph element by its ID
+    const tripIdParagraph = document.getElementById("tripIdParagraph");
+
+    // Update the content of the paragraph with the trip ID
+    tripIdParagraph.textContent = "Trip ID: " + tripId;
+  }
 };

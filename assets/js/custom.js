@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("main#spapp > section").height($(document).height()-150);
+  $("main#spapp > section").height($(document).height() - 150);
 
   var app = $.spapp({ pageNotFound: "error_404" }); // initialize
 
@@ -14,6 +14,7 @@ $(document).ready(function () {
   app.route({ view: "about", load: "about.html" });
   app.route({ view: "trips", load: "trips.html" });
   app.route({ view: "contact", load: "contact.html" });
+  app.route({ view: "trip-details", load: "trip-details.html" });
 
   // run app
   app.run();
