@@ -78,7 +78,7 @@ class BaseDao
     }
 
 
-    public function update($id, $entity, $id_column = "id")
+    public function update($entity, $id, $id_column = "id")
     {
         $query = "UPDATE " . $this->table_name . " SET ";
         foreach ($entity as $name => $value) {
@@ -91,6 +91,7 @@ class BaseDao
         $stmt = $this->conn->prepare($query);
         $entity['id'] = $id;
         $stmt->execute($entity);
+        return $entity;
     }
 
 

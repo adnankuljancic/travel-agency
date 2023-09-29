@@ -1,2 +1,154 @@
-<p id="tripIdParagraph">Trip ID will be displayed here</p>
+<div class="container mt-4 p-3" style="background-color: white">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="" class="img-fluid rounded" alt="Trip Image" id="trip_image" />
+    </div>
+    <div class="col-md-6">
+      <h1 class="mb-4" id="trip_name">Trip Name</h1>
+      <p class="lead" id="trip_price">Price: price</p>
+      <p id="trip_long_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget
+        mauris at felis vehicula euismod. Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia Curae; Nunc bibendum,
+        lorem id gravida cursus, tortor eros bibendum tortor.
+      </p>
+      <div class="mt-4">
+        <button class="btn btn-primary" id="wishlist-btn">Add to Wishlist</button>
+        <button class="btn btn-success" id="booktrip-btn">Book Now</button>
+        <!-- Button to open Modify modal -->
+        <button
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modifyTripModal"
+        >
+          Modify
+        </button>
+        <!-- Button to open Delete modal -->
+        <button
+          class="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteTripModal"
+        >
+          Delete
+        </button>
+      </div>
+      <input type="hidden" id="tripId">
+    </div>
+  </div>
+</div>
+
+<!-- Modify Trip Modal -->
+<div
+  class="modal fade"
+  id="modifyTripModal"
+  tabindex="-1"
+  aria-labelledby="modifyTripModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modifyTripModalLabel">Modify Trip</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="editTripForm">
+          <div class="mb-3">
+            <label for="tripName" class="form-label">Trip Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tripName"
+              placeholder="Enter trip name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="tripDescription" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="tripDescription"
+              rows="3"
+              placeholder="Enter trip description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="tripImageSrc" class="form-label">Image Source</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tripImageSrc"
+              placeholder="Enter image source URL"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="tripPrice" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="tripPrice"
+              placeholder="Enter trip price"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <!-- Button to save modifications -->
+        <button type="button" class="btn btn-primary" id="saveChangesButton">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Trip Modal -->
+<div
+  class="modal fade"
+  id="deleteTripModal"
+  tabindex="-1"
+  aria-labelledby="deleteTripModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteTripModalLabel">Delete Trip</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this trip?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <!-- Button to confirm delete action -->
+        <button type="button" class="btn btn-danger" id="deleteTripButton">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="assets/js/trip-service.js"></script>
+<script src="assets/js/wishlist-service.js"></script>
+<script type="text/javascript">
+    WishlistService.init();
+  </script>
+<script src="assets/js/mytrips-service.js"></script>
+<script type="text/javascript">
+    MytripsService.init();
+  </script>
+

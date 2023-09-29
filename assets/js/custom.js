@@ -15,6 +15,8 @@ $(document).ready(function () {
   app.route({ view: "trips", load: "trips.html" });
   app.route({ view: "contact", load: "contact.html" });
   app.route({ view: "trip-details", load: "trip-details.html" });
+  app.route({ view: "wishlist", load: "wishlist.html" });
+  app.route({ view: "my-trips", load: "mytrips.html" });
 
   // run app
   app.run();

@@ -94,6 +94,7 @@ class UserService extends BaseService
 
         unset($entity['password']);
         $entity['full_name'] = $existingUser['full_name'];
+        $entity['id'] = $existingUser['id'];
 
         $jwt = JWT::encode($entity, Config::$jwt_key, 'HS256');
 
