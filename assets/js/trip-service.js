@@ -24,7 +24,7 @@ var TripService = {
         "'>" +
         "<img src='" +
         data[i].image_link +
-        "' class='card-img-top' alt='...' /> " +
+        "' class='card-img-top img-thumbnail' alt='...' /> " +
         " <div class='card-body'> <h3 class='card-title'> " +
         data[i].name +
         "</h3> <p style='color: #4761FF'>" +
