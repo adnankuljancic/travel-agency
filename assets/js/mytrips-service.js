@@ -1,9 +1,13 @@
 var MytripsService = {
     init: function () {
+
+      //book now button click listener
       $("#booktrip-btn").click(function () {
         MytripsService.bookTrip();
       });
     },
+
+    //book now function
     bookTrip: function () {
       var jwtToken = localStorage.getItem("jwt_token");
       var tripId = $("#tripId").val();

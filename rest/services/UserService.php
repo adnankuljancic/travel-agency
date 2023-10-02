@@ -91,11 +91,11 @@ class UserService extends BaseService
         if (sha1($entity['password']) !== $existingUser['password']) {
             return ['message' => 'Invalid username or password'];
         }
-
+        $now_seconds = time();
         unset($entity['password']);
         $entity['full_name'] = $existingUser['full_name'];
         $entity['id'] = $existingUser['id'];
-
+        $entity['exp'] = $now_seconds+(60*60);
         $jwt = JWT::encode($entity, Config::$jwt_key, 'HS256');
 
         return ['token' => $jwt];
