@@ -31,14 +31,14 @@ var TripService = {
         data[i].price +
         "BAM</p><p class='card-text'>" +
         data[i].short_description +
-        "</p> <a href='#trip-details' class='btn btn-primary see-more-button'>See more</a> </div></div></div>";
+        "</p> <a class='btn btn-primary see-more-button'>See more</a> </div></div></div>";
     }
     $("#trips-div").html(html);
     $("#trips-div").on("click", ".card", function () {
       // Get the trip ID from the data attribute
       const tripId = $(this).data("id");
       console.log(tripId);
-
+      window.location.hash = "trip-details";
       // Redirect or navigate to the trip details page with the trip ID
       // Example: You can set the hash fragment with the trip ID
       TripService.tripDetailsFunction(tripId);
@@ -47,12 +47,10 @@ var TripService = {
 
   tripDetailsFunction: function (tripId) {
     // // Get the paragraph element by its ID
-    const trip_name = document.getElementById("trip_name");
-    const trip_price = document.getElementById("trip_price");
-    const trip_long_decription = document.getElementById(
-      "trip_long_description"
-    );
-    const trip_image = document.getElementById("trip_image");
+    const trip_name = $("#trip_name");
+    const trip_price = $("#trip_price");
+    const trip_long_decription = $("#trip_long_description");
+    const trip_image = $("#trip_image");
     this.trip_id = tripId;
     $.ajax({
       url: `rest/trips/${tripId}`,
@@ -61,10 +59,10 @@ var TripService = {
       success: function (data) {
         console.log(data);
         this.trip_data = data;
-        trip_name.textContent = data.name;
-        trip_price.textContent = "Price: " + data.price + "BAM";
-        trip_long_decription.textContent = data.long_description;
-        trip_image.src = data.image_link;
+        trip_name.text(data.name);
+        trip_price.text("Price: " + data.price + "BAM");
+        trip_long_decription.text(data.long_description);
+        trip_image.attr("src", data.image_link);
 
         $("#tripName").val(data.name);
         $("#tripDescription").val(data.short_description);
