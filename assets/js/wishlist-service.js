@@ -66,10 +66,12 @@ var WishlistService = {
         data[i].price +
         "BAM</p><p class='card-text'>" +
         data[i].short_description +
-        "</p> <a class='btn btn-primary'>Remove</a> </div></div></div>";
+        "</p> <a class='btn btn-primary' id='remove-wishlist-btn' data-id='" +
+        data[i].id +
+        "'>Remove</a> </div></div></div>";
     }
-    $("#trips-div").html(html);
-    $("#trips-div").on("click", ".card", function () {
+    $("#wishlist-trips-div").html(html);
+    $("#remove-wishlist-btn").on("click", function () {
       const tripId = $(this).data("id");
       $.ajax({
         url: "rest/wishlist/" + tripId,
@@ -79,6 +81,7 @@ var WishlistService = {
           // Handle the success response here
           console.log("Wishlist item deleted:", response);
           toastr.success("Deleted from wishlist!");
+          WishlistService.fetchWishlist();
         },
         error: function (xhr, status, error) {
           // Handle errors here

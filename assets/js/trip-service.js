@@ -1,6 +1,6 @@
 var TripService = {
   trip_id: null,
-  init: function () {
+  getTrips: function () {
     $.ajax({
       url: "rest/trips",
       type: "GET",
@@ -104,6 +104,7 @@ var TripService = {
         toastr.success("Update successful");
         console.log("Update successful:", response);
         window.location.hash = "trips";
+        TripService.getTrips();
       },
       error: function (xhr, status, error) {
         // Handle any errors that occur during the request
@@ -121,6 +122,7 @@ var TripService = {
         console.log("Delete successful:", response);
         $("#deleteTripModal").modal("hide");
         window.location.hash = "trips";
+        TripService.getTrips();
       },
       error: function (xhr, status, error) {
         console.error("Delete error:", error);

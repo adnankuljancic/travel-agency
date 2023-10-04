@@ -3,10 +3,6 @@
   max-width: 400px;
   margin: auto;
 }
-main#spapp {
-  background: #f8f9fa;
-  height: fit-content;
-}
 
 a {
   text-decoration: none;
