@@ -7,11 +7,14 @@ var WishlistService = {
   addToWishlist: function () {
     var jwtToken = localStorage.getItem("jwt_token");
     var tripId = $("#tripId").val();
+    console.log(tripId);
 
     var data = {
       jwt: jwtToken,
       trip_id: tripId,
     };
+
+    console.log(JSON.stringify(data));
 
     $.ajax({
       url: "rest/wishlist",
@@ -67,13 +70,13 @@ var WishlistService = {
     }
     $("#trips-div").html(html);
     $("#trips-div").on("click", ".card", function () {
+      const tripId = $(this).data("id");
       $.ajax({
-        url: "rest/wishlist/" + $(this).data("id"),
+        url: "rest/wishlist/" + tripId,
         type: "DELETE",
         dataType: "json",
         success: function (response) {
           // Handle the success response here
-          console.log($(this).data("id"));
           console.log("Wishlist item deleted:", response);
           toastr.success("Deleted from wishlist!");
         },

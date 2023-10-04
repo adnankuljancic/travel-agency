@@ -13,8 +13,9 @@
         lorem id gravida cursus, tortor eros bibendum tortor.
       </p>
       <div class="mt-4">
-        <button class="btn btn-primary" id="wishlist-btn">Add to Wishlist</button>
-        <button class="btn btn-success" id="booktrip-btn">Book Now</button>
+        <button class="btn btn-primary" id="wishlist-btn">
+          Add to Wishlist
+        </button>
         <!-- Button to open Modify modal -->
         <button
           class="btn btn-primary"
@@ -32,7 +33,7 @@
           Delete
         </button>
       </div>
-      <input type="hidden" id="tripId">
+      <input type="hidden" id="tripId" />
     </div>
   </div>
 </div>
@@ -136,7 +137,9 @@
           Cancel
         </button>
         <!-- Button to confirm delete action -->
-        <button type="button" class="btn btn-danger" id="deleteTripButton">Delete</button>
+        <button type="button" class="btn btn-danger" id="deleteTripButton">
+          Delete
+        </button>
       </div>
     </div>
   </div>
@@ -145,10 +148,5 @@
 <script src="assets/js/trip-service.js"></script>
 <script src="assets/js/wishlist-service.js"></script>
 <script type="text/javascript">
-    WishlistService.init();
-  </script>
-<script src="assets/js/mytrips-service.js"></script>
-<script type="text/javascript">
-    MytripsService.init();
-  </script>
-
+  WishlistService.init();
+</script>

@@ -39,18 +39,11 @@ var TripService = {
       const tripId = $(this).data("id");
       console.log(tripId);
       window.location.hash = "trip-details";
-      // Redirect or navigate to the trip details page with the trip ID
-      // Example: You can set the hash fragment with the trip ID
       TripService.tripDetailsFunction(tripId);
     });
   },
 
   tripDetailsFunction: function (tripId) {
-    // // Get the paragraph element by its ID
-    const trip_name = $("#trip_name");
-    const trip_price = $("#trip_price");
-    const trip_long_decription = $("#trip_long_description");
-    const trip_image = $("#trip_image");
     this.trip_id = tripId;
     $.ajax({
       url: `rest/trips/${tripId}`,
@@ -58,11 +51,10 @@ var TripService = {
       dataType: "json",
       success: function (data) {
         console.log(data);
-        this.trip_data = data;
-        trip_name.text(data.name);
-        trip_price.text("Price: " + data.price + "BAM");
-        trip_long_decription.text(data.long_description);
-        trip_image.attr("src", data.image_link);
+        $("#trip_name").text(data.name);
+        $("#trip_price").text("Price: " + data.price + "BAM");
+        $("#trip_long_description").text(data.long_description);
+        $("#trip_image").attr("src", data.image_link);
 
         $("#tripName").val(data.name);
         $("#tripDescription").val(data.short_description);
@@ -90,7 +82,6 @@ var TripService = {
     const editedPrice = $("#tripPrice").val();
 
     console.log(this.trip_id);
-    console.log("Radi");
     // Create a JSON object from the edited data
     const editedData = {
       id: this.trip_id,

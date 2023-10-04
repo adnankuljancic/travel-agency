@@ -54,6 +54,7 @@ class BaseDao
         $stmt = $this->conn->prepare("DELETE FROM " . $this->table_name . " WHERE id=:id");
         $stmt->bindParam(':id', $id); // SQL injection prevention
         $stmt->execute();
+        return $id;
     }
 
 
