@@ -2,6 +2,10 @@ var TripService = {
   trip_id: null,
   // function to get trips
   getTrips: function () {
+    $("#addTripModalBtn").click(function () {
+      TripService.addTrip();
+    });
+
     $.ajax({
       url: "rest/trips",
       type: "GET",
@@ -36,7 +40,7 @@ var TripService = {
         "</p> <a class='btn btn-primary see-more-button'>See more</a> </div></div></div>";
     }
     $("#trips-div").html(html);
-    
+
     // on click listener for trips
     $("#trips-div").on("click", ".card", function () {
       // Get the trip ID from the data attribute
@@ -100,9 +104,9 @@ var TripService = {
     // Create a PUT request to update the trip data
     $.ajax({
       url: "rest/trips",
-      type: "PUT", 
+      type: "PUT",
       dataType: "json",
-      contentType: "application/json; charset=utf-8", 
+      contentType: "application/json; charset=utf-8",
       data: JSON.stringify(editedData),
       success: function (response) {
         $("#modifyTripModal").modal("hide");
@@ -131,6 +135,36 @@ var TripService = {
       },
       error: function (xhr, status, error) {
         console.error("Delete error:", error);
+      },
+    });
+  },
+
+  addTrip: function () {
+    const tripData = {
+      name: $("#addTripName").val(),
+      short_description: $("#addTripShortDescription").val(),
+      long_description: $("#addTripLongDescription").val(),
+      image_link: $("#addTripImageSrc").val(),
+      price: $("#addTripPrice").val(),
+      category_id: $("#addTripCategory").val(),
+    };
+
+    // Create a PUT request to update the trip data
+    $.ajax({
+      url: "rest/trips",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(tripData),
+      success: function (response) {
+        $("#addTripModal").modal("hide");
+        toastr.success("Trip added");
+        console.log("Trip added:", response);
+        window.location.hash = "trips";
+        TripService.getTrips();
+      },
+      error: function (xhr, status, error) {
+        console.error("Update error:", error);
       },
     });
   },

@@ -25,6 +25,6 @@ var CategoryService = {
       html +=
         "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
     }
-    $("#tripCategory").html(html);
+    $("#addTripCategory").html(html);
   },
 };

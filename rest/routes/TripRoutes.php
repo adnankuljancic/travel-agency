@@ -88,4 +88,10 @@
     Flight::route('DELETE /trips/@id', function($id) {
         Flight::json(Flight::tripService()->delete($id));
     });
+
+
+    Flight::route('POST /trips', function() {
+        $entity = Flight::request()->data->getData();
+        Flight::json(Flight::tripService()->add($entity));
+    });
 ?>
