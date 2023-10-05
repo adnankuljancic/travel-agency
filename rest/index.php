@@ -11,17 +11,20 @@ require '../vendor/autoload.php';
 require_once __DIR__ . '/services/UserService.php';
 require_once __DIR__ . '/services/TripService.php';
 require_once __DIR__ . '/services/WishlistService.php';
+require_once __DIR__ . '/services/CategoryService.php';
 
 
 Flight::register('userService', "UserService");
 Flight::register('tripService', "TripService");
 Flight::register('wishlistService', "WishlistService");
+Flight::register('categoryService', "CategoryService");
 
 
 // import all routes
 require_once __DIR__ . '/routes/UserRoutes.php';
 require_once __DIR__ . '/routes/TripRoutes.php';
 require_once __DIR__ . '/routes/WishlistRoutes.php';
+require_once __DIR__ . '/routes/CategoryRoutes.php';
 
 
 /* REST API documentation endpoint */

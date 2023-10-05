@@ -1,5 +1,6 @@
 var TripService = {
   trip_id: null,
+  // function to get trips
   getTrips: function () {
     $.ajax({
       url: "rest/trips",
@@ -15,6 +16,7 @@ var TripService = {
     });
   },
 
+  // function to list trips as cards
   listTrips: function (data) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
@@ -34,6 +36,8 @@ var TripService = {
         "</p> <a class='btn btn-primary see-more-button'>See more</a> </div></div></div>";
     }
     $("#trips-div").html(html);
+    
+    // on click listener for trips
     $("#trips-div").on("click", ".card", function () {
       // Get the trip ID from the data attribute
       const tripId = $(this).data("id");
@@ -43,6 +47,7 @@ var TripService = {
     });
   },
 
+  //function that gets trip and shows its data on trip details page
   tripDetailsFunction: function (tripId) {
     this.trip_id = tripId;
     $.ajax({
@@ -75,6 +80,7 @@ var TripService = {
     });
   },
 
+  //function that saves modified trip
   saveModifiedTrip: function () {
     const editedName = $("#tripName").val();
     const editedDescription = $("#tripDescription").val();
@@ -94,12 +100,11 @@ var TripService = {
     // Create a PUT request to update the trip data
     $.ajax({
       url: "rest/trips",
-      type: "PUT", // Use the PUT method to update the data
+      type: "PUT", 
       dataType: "json",
-      contentType: "application/json; charset=utf-8", // Set the content type to JSON
-      data: JSON.stringify(editedData), // Send the editedData object as JSON
+      contentType: "application/json; charset=utf-8", 
+      data: JSON.stringify(editedData),
       success: function (response) {
-        // Handle the success response from the server
         $("#modifyTripModal").modal("hide");
         toastr.success("Update successful");
         console.log("Update successful:", response);
@@ -107,12 +112,12 @@ var TripService = {
         TripService.getTrips();
       },
       error: function (xhr, status, error) {
-        // Handle any errors that occur during the request
         console.error("Update error:", error);
       },
     });
   },
 
+  //function that deletes trip
   deleteTrip: function () {
     $.ajax({
       url: "rest/trips/" + this.trip_id,

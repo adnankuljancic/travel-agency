@@ -15,6 +15,16 @@
 </div>
 <!-- Page Header End -->
 
+<!-- Button to open Add trip modal -->
+<button
+  class="btn btn-primary ms-5 mb-3"
+  data-bs-toggle="modal"
+  data-bs-target="#addTripModal"
+  id="addTripBtn"
+>
+  Add Trip
+</button>
+
 <!-- Trips list Start -->
 <div class="container">
   <div id="trips-div" class="row"></div>
@@ -22,7 +32,103 @@
 
 <!-- Trips list End -->
 
+<!-- Add Trip Modal -->
+<div
+  class="modal fade"
+  id="addTripModal"
+  tabindex="-1"
+  aria-labelledby="addTripModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addTripModalLabel">Add Trip</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="addTripForm">
+          <div class="mb-3">
+            <label for="tripName" class="form-label">Trip Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tripName"
+              placeholder="Enter trip name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="tripShortDescription" class="form-label"
+              >Short description</label
+            >
+            <textarea
+              class="form-control"
+              id="tripShortDescription"
+              rows="2"
+              placeholder="Enter trip short description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="tripLongDescription" class="form-label"
+              >Long description</label
+            >
+            <textarea
+              class="form-control"
+              id="tripLongDescription"
+              rows="3"
+              placeholder="Enter trip Long description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="tripImageSrc" class="form-label">Image Source</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tripImageSrc"
+              placeholder="Enter image source URL"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="tripPrice" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="tripPrice"
+              placeholder="Enter trip price"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="tripCategory" class="form-label"
+              >Choose a category:</label
+            >
+            <select id="tripCategory" class="form-control">
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <!-- Button to save modifications -->
+        <button type="button" class="btn btn-primary" id="addTripButton">
+          Add Trip
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="assets/js/trip-service.js"></script>
 <script type="text/javascript">
   TripService.getTrips();
+</script>
+<script src="assets/js/category-service.js"></script>
+<script type="text/javascript">
+  CategoryService.AddNewTripClickListener();
 </script>

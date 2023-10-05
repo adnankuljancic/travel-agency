@@ -13,9 +13,11 @@
         lorem id gravida cursus, tortor eros bibendum tortor.
       </p>
       <div class="mt-4">
+        <!-- Button to add trip to wishlist -->
         <button class="btn btn-primary" id="wishlist-btn">
           Add to Wishlist
         </button>
+
         <!-- Button to open Modify modal -->
         <button
           class="btn btn-primary"
@@ -149,4 +151,8 @@
 <script src="assets/js/wishlist-service.js"></script>
 <script type="text/javascript">
   WishlistService.init();
+</script>
+<script src="assets/js/category-service.js"></script>
+<script type="text/javascript">
+  CategoryService.getCategories();
 </script>
