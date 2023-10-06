@@ -30,7 +30,7 @@ var TripService = {
         "'>" +
         "<img src='" +
         data[i].image_link +
-        "' class='card-img-top img-thumbnail' alt='...' /> " +
+        "' class='card-img-top' alt='...' /> " +
         " <div class='card-body'> <h3 class='card-title'> " +
         data[i].name +
         "</h3> <p style='color: #4761FF'>" +
@@ -62,14 +62,19 @@ var TripService = {
         console.log(data);
         $("#trip_name").text(data.name);
         $("#trip_price").text("Price: " + data.price + "BAM");
+        $("#trip_short_description").text(data.short_description);
         $("#trip_long_description").text(data.long_description);
         $("#trip_image").attr("src", data.image_link);
+        $("#trip_category").text("Category: " + data.category_name);
 
         $("#tripName").val(data.name);
-        $("#tripDescription").val(data.short_description);
+        $("#tripShortDescription").val(data.short_description);
+        $("#tripLongDescription").val(data.long_description);
         $("#tripImageSrc").val(data.image_link);
         $("#tripPrice").val(data.price);
         $("#tripId").val(data.id);
+        $("#tripCategory").val(data.category_id).trigger("change");
+
       },
       error: function (xhr, status, error) {
         console.error(error);
@@ -87,18 +92,22 @@ var TripService = {
   //function that saves modified trip
   saveModifiedTrip: function () {
     const editedName = $("#tripName").val();
-    const editedDescription = $("#tripDescription").val();
+    const editedShortDescription = $("#tripShortDescription").val();
+    const editedLongDescription = $("#tripLongDescription").val();
     const editedImageSrc = $("#tripImageSrc").val();
     const editedPrice = $("#tripPrice").val();
+    const editedCategory = $("#tripCategory").val();
 
     console.log(this.trip_id);
     // Create a JSON object from the edited data
     const editedData = {
       id: this.trip_id,
       name: editedName,
-      short_description: editedDescription,
+      short_description: editedShortDescription,
+      long_description: editedLongDescription,
       image_link: editedImageSrc,
       price: editedPrice,
+      category_id: editedCategory,
     };
 
     // Create a PUT request to update the trip data

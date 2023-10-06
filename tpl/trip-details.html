@@ -6,11 +6,18 @@
     <div class="col-md-6">
       <h1 class="mb-4" id="trip_name">Trip Name</h1>
       <p class="lead" id="trip_price">Price: price</p>
-      <p id="trip_long_description">
+      <p class="mb-2" id="trip_short_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget
+        mauris at felis vehicula euismod.
+      </p>
+      <p class="mb-2" id="trip_long_description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget
         mauris at felis vehicula euismod. Vestibulum ante ipsum primis in
         faucibus orci luctus et ultrices posuere cubilia Curae; Nunc bibendum,
         lorem id gravida cursus, tortor eros bibendum tortor.
+      </p>
+      <p id="trip_category" class="text-primary">
+        Category: unknown
       </p>
       <div class="mt-4">
         <!-- Button to add trip to wishlist -->
@@ -23,6 +30,7 @@
           class="btn btn-primary"
           data-bs-toggle="modal"
           data-bs-target="#modifyTripModal"
+          id="modifyTripBtn"
         >
           Modify
         </button>
@@ -71,12 +79,25 @@
             />
           </div>
           <div class="mb-3">
-            <label for="tripDescription" class="form-label">Description</label>
+            <label for="tripShortDescription" class="form-label"
+              >Short description</label
+            >
             <textarea
               class="form-control"
-              id="tripDescription"
+              id="tripShortDescription"
+              rows="2"
+              placeholder="Enter trip short description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="tripLongDescription" class="form-label"
+              >Long description</label
+            >
+            <textarea
+              class="form-control"
+              id="tripLongDescription"
               rows="3"
-              placeholder="Enter trip description"
+              placeholder="Enter trip long description"
             ></textarea>
           </div>
           <div class="mb-3">
@@ -96,6 +117,12 @@
               id="tripPrice"
               placeholder="Enter trip price"
             />
+          </div>
+          <div class="mb-3">
+            <label for="tripCategory" class="form-label"
+              >Choose a category:</label
+            >
+            <select id="tripCategory" class="form-control"></select>
           </div>
         </form>
       </div>
@@ -154,5 +181,5 @@
 </script>
 <script src="assets/js/category-service.js"></script>
 <script type="text/javascript">
-  CategoryService.getCategories();
+  CategoryService.ModifyTripClickListener();
 </script>
