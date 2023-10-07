@@ -25,19 +25,19 @@ var TripService = {
     var html = "";
     for (var i = 0; i < data.length; i++) {
       html +=
-        "<div class='col'><div class='card m-3' style='width: 24rem' data-id='" +
+        "<div class='col mb-5'><div class='card m-3 h-100' style='width: 24rem' data-id='" +
         data[i].id +
         "'>" +
         "<img src='" +
         data[i].image_link +
         "' class='card-img-top' alt='...' /> " +
-        " <div class='card-body'> <h3 class='card-title'> " +
+        " <div class='card-body d-flex flex-column'> <h3 class='card-title'> " +
         data[i].name +
         "</h3> <p style='color: #4761FF'>" +
         data[i].price +
         "BAM</p><p class='card-text'>" +
         data[i].short_description +
-        "</p> <a class='btn btn-primary see-more-button'>See more</a> </div></div></div>";
+        "</p> <a class='btn btn-primary see-more-button mt-auto'>See more</a> </div></div></div>";
     }
     $("#trips-div").html(html);
 
