@@ -56,6 +56,7 @@
     <link href="assets/css/style.css" rel="stylesheet" />
 
     <script src="assets/js/user-service.js"></script>
+    <script src="assets/js/trip-service.js"></script>
     \
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
@@ -136,7 +137,12 @@
               <a href="#about" class="nav-item nav-link">About</a>
               <a href="#trips" class="nav-item nav-link">Trips</a>
               <a href="#contact" class="nav-item nav-link">Contact</a>
-              <a href="#wishlist" class="nav-item nav-link">Wishlist</a>
+              <a
+                href="#wishlist"
+                id="wishlist-nav-item"
+                class="nav-item nav-link d-none"
+                >Wishlist</a
+              >
             </div>
             <div class="ms-auto d-none d-lg-block">
               <div id="authDiv">
@@ -205,17 +211,21 @@
       const authDiv = $("#authDiv");
       const userDropdown = $("#userDropdown");
       const userDropdownButton = $("#userDropdownButton");
+      const wishlistNavItem = $("#wishlist-nav-item");
+
 
       // Check if JWT token exists
       if (jwtToken) {
         try {
           var user = Utils.parseJwt(jwtToken);
           const username = user.username;
+          console.log(user);
 
           // Set the user's name in the dropdown button
           userDropdownButton.text(username);
           userDropdown.removeClass("d-none");
           authDiv.addClass("d-none");
+          wishlistNavItem.removeClass("d-none");
         } catch (error) {
           console.error("Error decoding JWT token:", error);
         }

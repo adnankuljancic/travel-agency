@@ -72,6 +72,8 @@ class UserService extends BaseService
             return ['message' => 'Invalid email format'];
         }
 
+        $entity['role'] = 0;
+
         return ['message' => 'success', 'user' => $this->dao->add($entity)];
     }
 
@@ -95,6 +97,7 @@ class UserService extends BaseService
         unset($entity['password']);
         $entity['full_name'] = $existingUser['full_name'];
         $entity['id'] = $existingUser['id'];
+        $entity['role'] = $existingUser['role'];
         // $entity['exp'] = $now_seconds+(60*60);
         $jwt = JWT::encode($entity, Config::$jwt_key, 'HS256');
 

@@ -74,7 +74,6 @@ var TripService = {
         $("#tripPrice").val(data.price);
         $("#tripId").val(data.id);
         $("#tripCategory").val(data.category_id).trigger("change");
-
       },
       error: function (xhr, status, error) {
         console.error(error);

@@ -21,9 +21,10 @@
       </p>
       <div class="mt-4">
         <!-- Button to add trip to wishlist -->
-        <button class="btn btn-primary" id="wishlist-btn">
+        <button class="btn btn-primary d-none" id="wishlist-btn">
           Add to Wishlist
         </button>
+        <div id="editTripDiv" class="d-none mt-4">
 
         <!-- Button to open Modify modal -->
         <button
@@ -42,6 +43,7 @@
         >
           Delete
         </button>
+      </div>
       </div>
       <input type="hidden" id="tripId" />
     </div>
@@ -182,4 +184,12 @@
 <script src="assets/js/category-service.js"></script>
 <script type="text/javascript">
   CategoryService.ModifyTripClickListener();
+</script>
+<script>
+  if (jwtToken) {
+    $("#wishlist-btn").removeClass("d-none");
+    if(user.role == 1) {
+    $("#editTripDiv").removeClass("d-none");
+    }
+  }
 </script>
